@@ -5,7 +5,7 @@ const {frontmatter} = Astro.props
 <BaseLayout pageTitle={frontmatter.title}>
     <article class="max-w-2xl mx-auto px-4 py-8 md:py-12 bg-white text-black w-full flex flex-col items-center">
         
-        {/* Cabecera Centrada */}
+      
         <header class="w-full border-b-2 border-black/20 pb-6 mb-10 flex flex-col items-center justify-center text-center">
             {frontmatter.image && (
                 <div class="w-full flex justify-center mb-4">
@@ -28,7 +28,7 @@ const {frontmatter} = Astro.props
             </div>
         </header>
 
-        {/* Contenido con nueva forma: Cajas más compactas, altas y bordes sutiles */}
+     
         <div class="w-full max-w-xl flex flex-col items-center gap-8 font-bold text-sm sm:text-base leading-relaxed tracking-wide text-left
             
             {/* Nueva forma de la caja: max-w-md para que sea menos larga, py-6 para más alta, rounded-2xl y borde gris sutil */}
