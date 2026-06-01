@@ -1,0 +1,29 @@
+---
+import Footer from '../components/footer.astro';
+import Navegation from '../components/navigation.astro';
+import '../styles/global.css';
+
+const pageTitle = "Pagina de inicio"
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+    </head>
+   
+    <body class="bg-white min-h-screen flex flex-col justify-between">
+        <Navegation />
+        
+        {/* Agregamos flex, flex-col e items-center para forzar a que CUALQUIER página se quede perfectamente centrada en el medio del monitor */}
+        <main class="w-full flex-1 flex flex-col items-center justify-start">
+            <slot />
+        </main>
+
+        <Footer />
+    </body>
+</html>

@@ -1,17 +1,68 @@
 ---
+import BaseLayout from '../layouts/baseLayout.astro';
+import ComoInstalar from '../components/como-instalar.astro';
 
+// 1. Cargamos dinámicamente todos los posts de Markdown de la carpeta posts/
+const postFiles = import.meta.glob("./posts/*.md", { eager: true });
+const allPosts = Object.values(postFiles);
+
+// 2. Filtramos para quitar el primer post (el de la instalación)
+const filteredPosts = allPosts.slice(1);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+    {/* Sección de introducción (Intacta) */}
+    <section class="max-w-4xl mx-auto px-4 py-8 sm:py-12 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-center md:text-left">
+        
+        <div class="w-48 sm:w-64 md:w-80 flex-shrink-0">
+            <img src="/rimu-opend.png" alt="Rimuru" class="w-full h-auto object-contain" />
+        </div>
+
+        <div class="flex-1 max-w-xl">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-black uppercase tracking-wide mb-4">
+                ¿Qué es ASTRO?
+            </h1>
+            <p class="font-medium text-gray-700 text-sm sm:text-base leading-relaxed">
+                Astro es un framework de desarrollo web diseñado específicamente para sitios web impulsados por contenido, como blogs, sitios de marketing, documentación y e-commerce.
+            </p>
+        </div>
+
+    </section>
+
+    {/* Tu componente con el banner de "Vamos a crear nuestro proyecto" (Intacto) */}
+    <ComoInstalar />
+
+    {/* Lista automática que arranca estrictamente desde el PASO 2 */}
+    <section class="w-full max-w-xl px-4 pb-12 mx-auto flex flex-col gap-4">
+        {filteredPosts.map((post: any, index) => (
+            <a 
+                href={post.url} 
+                class="w-full bg-white border border-gray-200 p-4 sm:p-5 rounded-md shadow-sm flex flex-row items-center justify-start gap-3 sm:gap-4 relative isolate transition-all duration-200 hover:shadow-md hover:border-gray-300 group block overflow-hidden"
+            >
+                
+                {/* La viñeta empieza a contar desde el PASO 2 de manera consecutiva */}
+                <div class="z-10 bg-black text-white font-black uppercase text-center py-1.5 px-2 sm:py-2 sm:px-2.5 rounded-sm transform -rotate-1 shadow-[2px_2px_0px_0px_rgba(169,214,229,1)] flex-shrink-0 min-w-[65px] sm:min-w-[75px]">
+                    <span class="text-[9px] sm:text-[10px] block tracking-wider text-[#A9D6E5]">
+                        PASO {index + 2}
+                    </span>
+                </div>
+
+                {/* Título del Markdown */}
+                <p class="z-10 font-bold text-gray-700 text-xs sm:text-sm md:text-base uppercase tracking-wide pr-14 sm:pr-16 group-hover:text-black transition-colors duration-200 text-left">
+                    {post.frontmatter.title}
+                </p>
+
+                {/* Imagen del post */}
+                {post.frontmatter.image && (
+                    <img 
+                        src={post.frontmatter.image.src} 
+                        alt={post.frontmatter.image.alt} 
+                        class="absolute right-1 bottom-0 h-16 sm:h-24 md:h-28 w-auto object-contain opacity-80 pointer-events-none z-0 transform translate-y-1 sm:translate-y-2 transition-transform duration-200 group-hover:scale-105"
+                    />
+                )}
+
+            </a>
+        ))}
+    </section>
+
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from "./baseLayout.astro"
+const {frontmatter} = Astro.props
+---
+<BaseLayout pageTitle={frontmatter.title}>
+    <article class="max-w-2xl mx-auto px-4 py-8 md:py-12 bg-white text-black w-full flex flex-col items-center">
+        
+        {/* Cabecera Centrada */}
+        <header class="w-full border-b-2 border-black/20 pb-6 mb-10 flex flex-col items-center justify-center text-center">
+            {frontmatter.image && (
+                <div class="w-full flex justify-center mb-4">
+                    <img 
+                        src={frontmatter.image.src} 
+                        alt={frontmatter.image.alt} 
+                        class="h-28 sm:h-36 w-auto object-contain pointer-events-none"
+                    />
+                </div>
+            )}
+
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-black tracking-wider leading-tight text-center text-black w-full uppercase block my-2 px-2">
+                {frontmatter.title}
+            </h1>
+            
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-center text-[11px] sm:text-xs font-bold text-gray-600 tracking-wider w-full uppercase mt-3">
+                <p>Escrito por: <span class="text-black font-black">{frontmatter.autor}</span></p>
+                <span class="hidden sm:inline text-gray-300">|</span>
+                <p>Publicado el: <time class="text-black font-black">{frontmatter.pubDate.toString().slice(0, 10)}</time></p>
+            </div>
+        </header>
+
+        {/* Contenido con nueva forma: Cajas más compactas, altas y bordes sutiles */}
+        <div class="w-full max-w-xl flex flex-col items-center gap-8 font-bold text-sm sm:text-base leading-relaxed tracking-wide text-left
+            
+            {/* Nueva forma de la caja: max-w-md para que sea menos larga, py-6 para más alta, rounded-2xl y borde gris sutil */}
+            [&>p]:w-full [&>p]:max-w-md [&>p]:bg-slate-50/50 [&>p]:border [&>p]:border-black/10 [&>p]:py-6 [&>p]:px-6 [&>p]:rounded-2xl [&>p]:shadow-[0_8px_30px_rgb(0,0,0,0.04)] [&>p]:lowercase [&>p]:first-letter:uppercase [&>p]:flex [&>p]:flex-col [&>p]:gap-3
+            
+            {/* Viñeta interna estilizada en forma de cápsula pequeña */}
+            [&>p]:before:content-[''] [&>p]:before:bg-[#A9D6E5] [&>p]:before:w-8 [&>p]:before:h-1.5 [&>p]:before:rounded-full [&>p]:before:block [&>p]:before:mb-1
+            
+            {/* Bloques de comandos adaptados a la nueva estética redondeada y suave */}
+            [&_code]:bg-slate-900 [&_code]:text-[#A9D6E5] [&_code]:px-4 [&_code]:py-3 [&_code]:border [&_code]:border-black/10 [&_code]:rounded-xl [&_code]:font-mono [&_code]:text-[0.85em] [&_code]:block [&_code]:w-full [&_code]:mt-2 [&_code]:whitespace-pre-wrap [&_code]:break-all [&_code]:normal-case [&_code]:shadow-inner">
+            <slot />
+        </div>
+
+    </article>
+</BaseLayout>
