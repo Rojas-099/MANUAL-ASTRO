@@ -1,12 +1,13 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Quien es esta pendeja? ࣪𖤐'
+type: ''
 pubDate: 2026-05-19
 description: 'Esta es la segunda publicacion de mi nuevo blog Astro.'
 autor: 'Nicolas R.'
 image: 
-    url: 'https://imgs.search.brave.com/Yw2PgbrfdH6effON5z8jhfSxt9jOUIECTLJs7OtcpoQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jLndh/bGxoZXJlLmNvbS9w/aG90b3MvMmEvZTYv/U291c291X05vX0Zy/aWVyZW5fRnJpZXJl/bi0yMzA3MDIwLmpw/ZyFzMg'
-    alt: 'frieren'
+    url: 'https://i.pinimg.com/736x/3d/6a/35/3d6a35dae1889bcec0a2acdb3fda2cba.jpg'
+    alt: 'rimuru'
 tags: ["astro" ,"bloguear" ,"foto random"]
 ---
 

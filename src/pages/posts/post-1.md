@@ -1,18 +1,18 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Como lo instalaremos?'
-type: ""
+type: ''
 pubDate: 2026-05-19
 description: 'Esta es la primera publicacion de mi nuevo blog Astro.'
 autor: 'Nicolas R.'
 image: 
-    src: '/rimu-3.png'
-    alt: 'Logo de Astro'
+    url: 'https://co.pinterest.com/pin/796855727863917979/'
+    alt: 'rimu'
 tags: ["astro" ,"bloguear" ,"aprender en publico"]
 ---
-Primero que todo abre tu terminal con "Ctrl + Alt + T"
+Primero que todo abre tu terminal con     "Ctrl + Alt + T"
 
-imagen de la termnial 
+imagen de la termnial
 
 Paso N #1.
     Actualiza la lista de paquetes del sistema con:
